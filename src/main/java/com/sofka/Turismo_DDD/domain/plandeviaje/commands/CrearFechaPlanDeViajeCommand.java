@@ -10,7 +10,7 @@ public class CrearFechaPlanDeViajeCommand extends Command {
     private final PlanDeViajeID planDeViajeID;
     private final FechaPlanDeViaje fechaPlanDeViaje;
 
-    public CrearFechaPlanDeViajeCommand(PlanDeViajeID planDeViajeID,FechaPlanDeViaje fechaPlanDeViaje) {
+    public CrearFechaPlanDeViajeCommand(PlanDeViajeID planDeViajeID, FechaPlanDeViaje fechaPlanDeViaje) {
         this.planDeViajeID = Objects.requireNonNull(planDeViajeID, "El ID de plan de viaje no puede ser nulo");
         this.fechaPlanDeViaje = Objects.requireNonNull(fechaPlanDeViaje, "La Fecha de plan de viaje no puede ser nula");
     }

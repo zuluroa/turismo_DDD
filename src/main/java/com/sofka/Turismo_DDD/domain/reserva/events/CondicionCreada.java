@@ -11,10 +11,10 @@ public class CondicionCreada extends DomainEvent {
     private final CondicionID condicionID;
     private final Observacion observacion;
 
-    public CondicionCreada(CondicionID condicionID,Observacion observacion) {
+    public CondicionCreada(CondicionID condicionID, Observacion observacion) {
         super("sofka.reserva.condicioncreada");
         this.condicionID = Objects.requireNonNull(condicionID, "El ID de la condicion no puede ser nula");
-        this.observacion = Objects.requireNonNull(observacion,"La observacion no puede ser nula");
+        this.observacion = Objects.requireNonNull(observacion, "La observacion no puede ser nula");
     }
 
     public CondicionID getCondicionID() {

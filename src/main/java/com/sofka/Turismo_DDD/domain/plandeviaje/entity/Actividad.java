@@ -12,14 +12,16 @@ import static com.sofka.Turismo_DDD.domain.utils.mayorOIgual.mayorOIgualQue;
 public class Actividad extends Entity<ActividadID> {
 
     private final ActividadID actividadID;
-    private  ActividadPlanDeVIaje actividad;
+    private ActividadPlanDeVIaje actividad;
 
     public Actividad(ActividadID actividadID, ActividadPlanDeVIaje actividad) {
         super(actividadID);
         this.actividadID = Objects.requireNonNull(actividadID, "El ID de actividad no puede ser nulo");
         this.actividad = Objects.requireNonNull(actividad, "La actividad no puede ser nula");
-        if(compararSiNuloOEsVacio(actividad.value()))throw new IllegalArgumentException("La actividad no puede ser vacio");
-        if(mayorOIgualQue(actividad.value().length() , 6)) throw new IllegalArgumentException("La actividad debe ser mayor de 3 caracteres");
+        if (compararSiNuloOEsVacio(actividad.value()))
+            throw new IllegalArgumentException("La actividad no puede ser vacio");
+        if (mayorOIgualQue(actividad.value().length(), 6))
+            throw new IllegalArgumentException("La actividad debe ser mayor de 3 caracteres");
     }
 
     public void ActualizarActividad(ActividadPlanDeVIaje actividad) {

@@ -5,12 +5,18 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofka.Turismo_DDD.domain.genericvalues.*;
+import com.sofka.Turismo_DDD.domain.genericvalues.Contacto;
+import com.sofka.Turismo_DDD.domain.genericvalues.Direccion;
+import com.sofka.Turismo_DDD.domain.genericvalues.Identificacion;
+import com.sofka.Turismo_DDD.domain.genericvalues.Nombre;
 import com.sofka.Turismo_DDD.domain.reserva.commands.AgregarClienteCommand;
 import com.sofka.Turismo_DDD.domain.reserva.entity.Vendedor;
 import com.sofka.Turismo_DDD.domain.reserva.events.ClienteCreado;
 import com.sofka.Turismo_DDD.domain.reserva.events.ReservaCreada;
-import com.sofka.Turismo_DDD.domain.reserva.values.*;
+import com.sofka.Turismo_DDD.domain.reserva.values.ClienteID;
+import com.sofka.Turismo_DDD.domain.reserva.values.Fecha;
+import com.sofka.Turismo_DDD.domain.reserva.values.ReservaID;
+import com.sofka.Turismo_DDD.domain.reserva.values.VendedorID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,15 +37,15 @@ class AgregarClienteUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-     void CrearCliente() {
+    void CrearCliente() {
         ReservaID reservaID = ReservaID.of("1234");
         ClienteID clienteID = ClienteID.of("1234");
-        Identificacion identificacion =  new Identificacion("cedula","1234567890");
-        Nombre nombre = new Nombre("David","Zuluaga");
-        Direccion direccion =  new Direccion("Cucuta","Av 12 calle novena");
-        Contacto contacto = new Contacto("32020408340","zuluroa@gmail.com");
-        var command = new AgregarClienteCommand(reservaID,clienteID,
-                identificacion,nombre,direccion,contacto);
+        Identificacion identificacion = new Identificacion("cedula", "1234567890");
+        Nombre nombre = new Nombre("David", "Zuluaga");
+        Direccion direccion = new Direccion("Cucuta", "Av 12 calle novena");
+        Contacto contacto = new Contacto("32020408340", "zuluroa@gmail.com");
+        var command = new AgregarClienteCommand(reservaID, clienteID,
+                identificacion, nombre, direccion, contacto);
         var usecase = new AgregarClienteUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(events());
@@ -76,16 +82,16 @@ class AgregarClienteUseCaseTest {
     }
 
     @Test
-     void CrearCliente_FallaPorTopeClientesAgregadas() {
+    void CrearCliente_FallaPorTopeClientesAgregadas() {
 
         ReservaID reservaID = ReservaID.of("1234");
         ClienteID clienteID = ClienteID.of("1234");
-        Identificacion identificacion =  new Identificacion("cedula","1234567890");
-        Nombre nombre = new Nombre("David","Zuluaga");
-        Direccion direccion =  new Direccion("Cucuta","Av 12 calle novena");
-        Contacto contacto = new Contacto("32020408340","zuluroa@gmail.com");
-        var command = new AgregarClienteCommand(reservaID,clienteID,
-                identificacion,nombre,direccion,contacto);
+        Identificacion identificacion = new Identificacion("cedula", "1234567890");
+        Nombre nombre = new Nombre("David", "Zuluaga");
+        Direccion direccion = new Direccion("Cucuta", "Av 12 calle novena");
+        Contacto contacto = new Contacto("32020408340", "zuluroa@gmail.com");
+        var command = new AgregarClienteCommand(reservaID, clienteID,
+                identificacion, nombre, direccion, contacto);
         var usecase = new AgregarClienteUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(fullICondicionesEvents());

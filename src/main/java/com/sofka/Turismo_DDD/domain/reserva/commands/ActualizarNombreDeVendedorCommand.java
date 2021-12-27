@@ -1,17 +1,11 @@
 package com.sofka.Turismo_DDD.domain.reserva.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.sofka.Turismo_DDD.domain.genericvalues.Contacto;
 import com.sofka.Turismo_DDD.domain.genericvalues.Nombre;
 import com.sofka.Turismo_DDD.domain.reserva.entity.Vendedor;
-import com.sofka.Turismo_DDD.domain.reserva.values.ClienteID;
 import com.sofka.Turismo_DDD.domain.reserva.values.ReservaID;
-import com.sofka.Turismo_DDD.domain.utils.CompararVacioONulo;
-import com.sofka.Turismo_DDD.domain.utils.CorreoElectronicoValido;
 
 import java.util.Objects;
-
-import static com.sofka.Turismo_DDD.domain.utils.mayorOIgual.mayorOIgualQue;
 
 public class ActualizarNombreDeVendedorCommand extends Command {
 

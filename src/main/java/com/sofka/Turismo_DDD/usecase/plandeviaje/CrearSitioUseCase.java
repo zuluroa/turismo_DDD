@@ -11,10 +11,10 @@ public class CrearSitioUseCase extends UseCase<RequestCommand<CrearSitioCommand>
     @Override
     public void executeUseCase(RequestCommand<CrearSitioCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var planDeViaje =  PlanDeViaje.from(command.getPlanDeViajeID(),retrieveEvents());
+        var planDeViaje = PlanDeViaje.from(command.getPlanDeViajeID(), retrieveEvents());
         if (planDeViaje.getSitios().size() == 3) throw new BusinessException(command.getPlanDeViajeID().value(),
                 "Llego el tope de sitios agregadas");
-        planDeViaje.crearSitio(command.getSitioID(),command.getSitio());
+        planDeViaje.crearSitio(command.getSitioID(), command.getSitio());
         emit().onResponse(new ResponseEvents(planDeViaje.getUncommittedChanges()));
     }
 }

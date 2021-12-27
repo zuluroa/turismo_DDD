@@ -8,14 +8,14 @@ import com.sofka.Turismo_DDD.domain.reserva.values.ReservaID;
 import java.util.Objects;
 
 public class CrearCondicionCommand extends Command {
-    private ReservaID reservaID;
     private final CondicionID condicionID;
     private final Observacion observacion;
+    private ReservaID reservaID;
 
-    public CrearCondicionCommand(ReservaID reservaID,CondicionID condicionID, Observacion observacion) {
-        this.reservaID = Objects.requireNonNull(reservaID,"");
+    public CrearCondicionCommand(ReservaID reservaID, CondicionID condicionID, Observacion observacion) {
+        this.reservaID = Objects.requireNonNull(reservaID, "");
         this.condicionID = Objects.requireNonNull(condicionID, "El ID de la condicion no puede ser nula");
-        this.observacion = Objects.requireNonNull(observacion,"La observacion no puede ser nula");
+        this.observacion = Objects.requireNonNull(observacion, "La observacion no puede ser nula");
     }
 
     public ReservaID getReservaID() {

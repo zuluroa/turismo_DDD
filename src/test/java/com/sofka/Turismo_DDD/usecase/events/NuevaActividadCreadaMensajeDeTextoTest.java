@@ -6,7 +6,6 @@ import co.com.sofka.business.support.TriggeredEvent;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.ActividadCreado;
 import com.sofka.Turismo_DDD.domain.plandeviaje.values.ActividadID;
 import com.sofka.Turismo_DDD.domain.plandeviaje.values.ActividadPlanDeVIaje;
-import com.sofka.Turismo_DDD.domain.reserva.values.ReservaID;
 import com.sofka.Turismo_DDD.usecase.plandeviaje.NuevaActividadCreadaMensajeDeTexto;
 import com.sofka.Turismo_DDD.usecase.plandeviaje.SendMensajeTexto;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,13 +23,13 @@ class NuevaActividadCreadaMensajeDeTextoTest {
     SendMensajeTexto service;
 
     @Test
-    void nuevaActividadCreada(){
-        var event = new ActividadCreado(ActividadID.of("1234"),new ActividadPlanDeVIaje("ACAMPPAR"));
+    void nuevaActividadCreada() {
+        var event = new ActividadCreado(ActividadID.of("1234"), new ActividadPlanDeVIaje("ACAMPPAR"));
         event.setAggregateRootId("xxxx");
         var usecase = new NuevaActividadCreadaMensajeDeTexto();
 
         when(service.sendMessage("3202040834",
-                "NUEVA ACTIVIDAD CREADA! "+ event.getActividadPlanDeVIaje().value())).thenReturn(true);
+                "NUEVA ACTIVIDAD CREADA! " + event.getActividadPlanDeVIaje().value())).thenReturn(true);
 
         ServiceBuilder builder = new ServiceBuilder();
         builder.addService(service);
@@ -42,6 +40,6 @@ class NuevaActividadCreadaMensajeDeTextoTest {
                 .orElseThrow();
 
         verify(service).sendMessage("3202040834",
-                "NUEVA ACTIVIDAD CREADA! "+ event.getActividadPlanDeVIaje().value());
+                "NUEVA ACTIVIDAD CREADA! " + event.getActividadPlanDeVIaje().value());
     }
 }

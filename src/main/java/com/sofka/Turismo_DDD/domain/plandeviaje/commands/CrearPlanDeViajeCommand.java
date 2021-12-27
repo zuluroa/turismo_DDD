@@ -1,6 +1,5 @@
 package com.sofka.Turismo_DDD.domain.plandeviaje.commands;
 
-import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.domain.generic.Command;
 import com.sofka.Turismo_DDD.domain.genericvalues.CupoMaximo;
 import com.sofka.Turismo_DDD.domain.plandeviaje.entity.FechaPlanDeViaje;
@@ -15,8 +14,8 @@ public class CrearPlanDeViajeCommand extends Command {
 
     public CrearPlanDeViajeCommand(PlanDeViajeID planDeViajeID, FechaPlanDeViaje fechaPlanDeViaje, CupoMaximo cupoMaximo) {
         this.planDeViajeID = Objects.requireNonNull(planDeViajeID, "El ID del plan de viaje no puede ser nulo");
-        this.fechaPlanDeViaje = Objects.requireNonNull(fechaPlanDeViaje,"La fecha del plan de viaje no puede ser nulo");
-        this.cupoMaximo =  Objects.requireNonNull(cupoMaximo,"La cupo maximo del plan de viaje no puede ser nulo");
+        this.fechaPlanDeViaje = Objects.requireNonNull(fechaPlanDeViaje, "La fecha del plan de viaje no puede ser nulo");
+        this.cupoMaximo = Objects.requireNonNull(cupoMaximo, "La cupo maximo del plan de viaje no puede ser nulo");
     }
 
     public PlanDeViajeID getPlanDeViajeID() {

@@ -5,7 +5,6 @@ import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.business.support.TriggeredEvent;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.ActividadCreado;
-import com.sofka.Turismo_DDD.domain.reserva.values.ReservaID;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class NuevaActividadCreadaMensajeDeTexto extends UseCase<TriggeredEvent<A
         var service = getService(SendMensajeTexto.class).orElseThrow();
         boolean isSend = service.sendMessage(
                 "3202040834",
-                "NUEVA ACTIVIDAD CREADA! "+ event.getActividadPlanDeVIaje().value()
+                "NUEVA ACTIVIDAD CREADA! " + event.getActividadPlanDeVIaje().value()
         );
 
         if (!isSend) throw new BusinessException(event.aggregateRootId(), "No se pudo enviar el mensaje");

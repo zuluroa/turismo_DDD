@@ -16,7 +16,7 @@ public class Servicio extends Entity<ServicioID> {
         this.tipoDeServicio = Objects.requireNonNull(tipoDeServicio, "El tipo de servicio no puede ser nulo");
     }
 
-    public void ActualizarTipoDeServicio(TipoDeServicio tipoDeServicio){
+    public void ActualizarTipoDeServicio(TipoDeServicio tipoDeServicio) {
         this.tipoDeServicio = Objects.requireNonNull(tipoDeServicio, "El tipo de servicio no puede ser nulo");
     }
 

@@ -12,8 +12,10 @@ public class TipoDeHabitacion implements ValueObject<String> {
 
     public TipoDeHabitacion(String value) {
         this.value = Objects.requireNonNull(value, "El tipo de habitacion no puede ser nulo");
-        if(compararSiNuloOEsVacio(this.value))throw new IllegalArgumentException("El tipo de habitacion no puede ser vacio");
-        if(mayorOIgualQue(this.value.length() , 4)) throw new IllegalArgumentException("El tipo de habitacion debe ser mayor de 4 caracteres");
+        if (compararSiNuloOEsVacio(this.value))
+            throw new IllegalArgumentException("El tipo de habitacion no puede ser vacio");
+        if (mayorOIgualQue(this.value.length(), 4))
+            throw new IllegalArgumentException("El tipo de habitacion debe ser mayor de 4 caracteres");
     }
 
     public String value() {

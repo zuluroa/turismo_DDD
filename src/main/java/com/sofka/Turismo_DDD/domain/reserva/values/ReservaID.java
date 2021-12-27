@@ -6,11 +6,11 @@ public class ReservaID extends Identity {
     public ReservaID() {
     }
 
-    private ReservaID(String id){
+    private ReservaID(String id) {
         super(id);
     }
 
-    public static ReservaID of(String id){
+    public static ReservaID of(String id) {
         return new ReservaID(id);
     }
 }

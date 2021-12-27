@@ -6,11 +6,11 @@ public class ActividadID extends Identity {
     public ActividadID() {
     }
 
-    private ActividadID(String id){
+    private ActividadID(String id) {
         super(id);
     }
 
-    public static ActividadID of(String id){
+    public static ActividadID of(String id) {
         return new ActividadID(id);
     }
 }

@@ -19,10 +19,11 @@ public class ClienteCreado extends DomainEvent {
     public ClienteCreado(ClienteID clienteID, Identificacion identificacion, Nombre nombre, Direccion direccion, Contacto contacto) {
         super("sofka.reserva.clientecreado");
         this.clienteID = Objects.requireNonNull(clienteID, "El ID del cliente no puede ser nulo");
-        this.identificacion = Objects.requireNonNull(identificacion,"El tipo de identificación no puede ser nulo");
-        this.nombre = Objects.requireNonNull(nombre,"El nombre no puede ser nulo");
-        this.direccion = Objects.requireNonNull(direccion,"La direccion no puede ser nula");
-        this.contacto = Objects.requireNonNull(contacto,"El contacto no puede ser nulo");;
+        this.identificacion = Objects.requireNonNull(identificacion, "El tipo de identificación no puede ser nulo");
+        this.nombre = Objects.requireNonNull(nombre, "El nombre no puede ser nulo");
+        this.direccion = Objects.requireNonNull(direccion, "La direccion no puede ser nula");
+        this.contacto = Objects.requireNonNull(contacto, "El contacto no puede ser nulo");
+        ;
     }
 
     public ClienteID getClienteID() {

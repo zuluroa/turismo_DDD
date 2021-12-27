@@ -18,7 +18,7 @@ public class CrearFechaPlanDeViajeUseCase extends UseCase<RequestCommand<CrearFe
 
         calendar.setTime(planDeViaje.getFechaPlanDeViaje().getFechaIda().value());
         var dayOFWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        if(dayOFWeek == Calendar.SATURDAY || dayOFWeek == Calendar.SUNDAY){
+        if (dayOFWeek == Calendar.SATURDAY || dayOFWeek == Calendar.SUNDAY) {
             throw new BusinessException(command.getPlanDeViajeID().value(), "No puede crear fechas en fines de semana");
         }
 

@@ -12,8 +12,9 @@ public class Ciudad implements ValueObject<String> {
 
     public Ciudad(String value) {
         this.value = Objects.requireNonNull(value, "La ciudad no puede ser nulo");
-        if(compararSiNuloOEsVacio(this.value))throw new IllegalArgumentException("La ciudad no puede ser vacio");
-        if(mayorOIgualQue(this.value.length() , 4)) throw new IllegalArgumentException("La ciudad debe ser mayor de 4 caracteres");
+        if (compararSiNuloOEsVacio(this.value)) throw new IllegalArgumentException("La ciudad no puede ser vacio");
+        if (mayorOIgualQue(this.value.length(), 4))
+            throw new IllegalArgumentException("La ciudad debe ser mayor de 4 caracteres");
     }
 
     public String value() {

@@ -12,7 +12,7 @@ public class ActividadCreado extends DomainEvent {
 
     public ActividadCreado(ActividadID actividadID, ActividadPlanDeVIaje actividadPlanDeVIaje) {
         super("sofka.plandeviaje.actividadcreado");
-        this.actividadID = Objects.requireNonNull(actividadID,"El ID de actividad no puede ser nulo");
+        this.actividadID = Objects.requireNonNull(actividadID, "El ID de actividad no puede ser nulo");
         this.actividadPlanDeVIaje = Objects.requireNonNull(actividadPlanDeVIaje, "La actividad del plan de viaje no puede ser nulo");
     }
 

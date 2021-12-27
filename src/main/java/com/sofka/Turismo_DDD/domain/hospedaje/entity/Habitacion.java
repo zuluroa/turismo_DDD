@@ -10,9 +10,9 @@ import java.util.Objects;
 
 public class Habitacion extends Entity<HabitacionID> {
     private final HabitacionID entityId;
-    private  CupoMaximo cupoMaximo;
-    private  TipoDeHabitacion tipoDeHabitacion;
-    private  PrecioHabitacion precioHabitacion;
+    private CupoMaximo cupoMaximo;
+    private TipoDeHabitacion tipoDeHabitacion;
+    private PrecioHabitacion precioHabitacion;
 
     public Habitacion(HabitacionID entityId, CupoMaximo cupoMaximo, TipoDeHabitacion tipoDeHabitacion, PrecioHabitacion precioHabitacion) {
         super(entityId);
@@ -20,20 +20,22 @@ public class Habitacion extends Entity<HabitacionID> {
         this.cupoMaximo = Objects.requireNonNull(cupoMaximo, "El cupo maximo  no puede ser nulo");
         this.tipoDeHabitacion = Objects.requireNonNull(tipoDeHabitacion, "El tipo de la habitacion no puede ser nulo");
         this.precioHabitacion = Objects.requireNonNull(precioHabitacion, "El precio de la habitacion no puede ser nulo");
-        if(precioHabitacion.value() < 0) throw new IllegalArgumentException("El precio de la habitacion debe ser mayor que 0");
+        if (precioHabitacion.value() < 0)
+            throw new IllegalArgumentException("El precio de la habitacion debe ser mayor que 0");
     }
 
-    public void ActualizarTipoDeHabitacion(TipoDeHabitacion tipoDeHabitacion){
+    public void ActualizarTipoDeHabitacion(TipoDeHabitacion tipoDeHabitacion) {
         this.tipoDeHabitacion = Objects.requireNonNull(tipoDeHabitacion, "El tipo de la habitacion no puede ser nulo");
     }
 
-    public void ActualizarCupoMaximo(CupoMaximo cupoMaximo){
+    public void ActualizarCupoMaximo(CupoMaximo cupoMaximo) {
         this.cupoMaximo = Objects.requireNonNull(cupoMaximo, "El cupo maximo  no puede ser nulo");
     }
 
-    public void ActualizarPrecioHabitacion(PrecioHabitacion precioHabitacion){
+    public void ActualizarPrecioHabitacion(PrecioHabitacion precioHabitacion) {
         this.precioHabitacion = Objects.requireNonNull(precioHabitacion, "El precio de la habitacion no puede ser nulo");
-        if(precioHabitacion.value() < 0) throw new IllegalArgumentException("El precio de la habitacion debe ser mayor que 0");
+        if (precioHabitacion.value() < 0)
+            throw new IllegalArgumentException("El precio de la habitacion debe ser mayor que 0");
     }
 
     public HabitacionID getEntityId() {

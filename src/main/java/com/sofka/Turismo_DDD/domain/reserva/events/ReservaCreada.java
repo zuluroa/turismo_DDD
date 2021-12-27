@@ -10,10 +10,10 @@ public class ReservaCreada extends DomainEvent {
     private final Vendedor vendedor;
     private final Fecha fecha;
 
-    public ReservaCreada(Vendedor vendedor,Fecha fecha) {
+    public ReservaCreada(Vendedor vendedor, Fecha fecha) {
         super("sofka.reserva.fechaactualizada");
-        this.vendedor = Objects.requireNonNull(vendedor,"El vendedor no puede ser nulo");
-        this.fecha = Objects.requireNonNull(fecha,"La fecha no puede ser nula");
+        this.vendedor = Objects.requireNonNull(vendedor, "El vendedor no puede ser nulo");
+        this.fecha = Objects.requireNonNull(fecha, "La fecha no puede ser nula");
     }
 
     public Vendedor getVendedor() {

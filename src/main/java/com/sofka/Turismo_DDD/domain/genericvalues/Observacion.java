@@ -12,8 +12,10 @@ public class Observacion implements ValueObject<String> {
 
     public Observacion(String observacion) {
         this.observacion = Objects.requireNonNull(observacion, "La observacion no puede ser nula");
-        if (CompararVacioONulo.compararSiNuloOEsVacio(observacion)) throw new IllegalArgumentException("La observacion no puede ser vacia");
-        if (mayorOIgual.mayorOIgualQue(observacion.length() ,5)) throw new IllegalArgumentException("La observacion debe tener más de 5 caracteres");
+        if (CompararVacioONulo.compararSiNuloOEsVacio(observacion))
+            throw new IllegalArgumentException("La observacion no puede ser vacia");
+        if (mayorOIgual.mayorOIgualQue(observacion.length(), 5))
+            throw new IllegalArgumentException("La observacion debe tener más de 5 caracteres");
     }
 
     @Override

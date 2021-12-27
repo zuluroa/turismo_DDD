@@ -16,7 +16,7 @@ public class CrearHabitacionCommand extends Command {
     private final TipoDeHabitacion tipoDeHabitacion;
     private final PrecioHabitacion precioHabitacion;
 
-    public CrearHabitacionCommand(HospedajeID hospedajeID,HabitacionID habitacionID, CupoMaximo cupoMaximo, TipoDeHabitacion tipoDeHabitacion, PrecioHabitacion precioHabitacion) {
+    public CrearHabitacionCommand(HospedajeID hospedajeID, HabitacionID habitacionID, CupoMaximo cupoMaximo, TipoDeHabitacion tipoDeHabitacion, PrecioHabitacion precioHabitacion) {
         this.hospedajeID = Objects.requireNonNull(hospedajeID, "El ID del hospedaje no puede ser nulo");
         this.habitacionID = Objects.requireNonNull(habitacionID, "El ID de la habitacion no puede ser nula");
         this.cupoMaximo = Objects.requireNonNull(cupoMaximo, "El cupo maximo no puede ser nulo");

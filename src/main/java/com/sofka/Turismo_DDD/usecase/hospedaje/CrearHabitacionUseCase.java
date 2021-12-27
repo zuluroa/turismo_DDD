@@ -11,17 +11,19 @@ public class CrearHabitacionUseCase extends UseCase<RequestCommand<CrearHabitaci
     @Override
     public void executeUseCase(RequestCommand<CrearHabitacionCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var hospedaje = Hospedaje.from(command.getHospedajeID(),retrieveEvents());
+        var hospedaje = Hospedaje.from(command.getHospedajeID(), retrieveEvents());
 
-        if(hospedaje.getLocalizacion().getCiudad().value() == null || hospedaje.getLocalizacion().getCiudad().value().isBlank()) throw new BusinessException(command.getHospedajeID().value(),
-                "El hospedaje no puede ser nulo o vacio");
-        if (hospedaje.getPrecioTotalHabitacion().value() < 0) throw  new BusinessException(command.getHospedajeID().value(),
-                "El precio del hospedaje debe ser mayor a 0");
+        if (hospedaje.getLocalizacion().getCiudad().value() == null || hospedaje.getLocalizacion().getCiudad().value().isBlank())
+            throw new BusinessException(command.getHospedajeID().value(),
+                    "El hospedaje no puede ser nulo o vacio");
+        if (hospedaje.getPrecioTotalHabitacion().value() < 0)
+            throw new BusinessException(command.getHospedajeID().value(),
+                    "El precio del hospedaje debe ser mayor a 0");
 
-        if(hospedaje.getHabitaciones().size() == 4)throw  new BusinessException(command.getHospedajeID().value(),
+        if (hospedaje.getHabitaciones().size() == 4) throw new BusinessException(command.getHospedajeID().value(),
                 "Alcanzo el limite de habitaciones creadas");
 
-        hospedaje.crearHabitacion(command.getHabitacionID(),command.getCupoMaximo(),command.getTipoDeHabitacion(),command.getPrecioHabitacion());
+        hospedaje.crearHabitacion(command.getHabitacionID(), command.getCupoMaximo(), command.getTipoDeHabitacion(), command.getPrecioHabitacion());
         emit().onResponse(new ResponseEvents(retrieveEvents()));
     }
 }

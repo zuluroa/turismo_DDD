@@ -11,20 +11,20 @@ public class FechaPlanDeViaje extends Entity<FechaPlanDeViajeID> {
 
     private final FechaPlanDeViajeID planDeViajeID;
     private FechaIda fechaIda;
-    private  FechaRegreso fechaRegreso;
+    private FechaRegreso fechaRegreso;
 
     public FechaPlanDeViaje(FechaPlanDeViajeID planDeViajeID, FechaIda fechaIda, FechaRegreso fechaRegreso) {
         super(planDeViajeID);
-        this.planDeViajeID = Objects.requireNonNull(planDeViajeID,"El ID de fecha plan de viaje no puede ser nula");
+        this.planDeViajeID = Objects.requireNonNull(planDeViajeID, "El ID de fecha plan de viaje no puede ser nula");
         this.fechaIda = Objects.requireNonNull(fechaIda, "La fecha de ida no puede ser nula");
         this.fechaRegreso = Objects.requireNonNull(fechaRegreso, "La fecha de regreso no puede ser nula");
     }
 
-    public void ActualizarFechaIda(FechaIda fechaIda){
+    public void ActualizarFechaIda(FechaIda fechaIda) {
         this.fechaIda = Objects.requireNonNull(fechaIda, "La fecha de ida no puede ser nula");
     }
 
-    public void ActualizarFechaRegreso(FechaRegreso fechaRegreso){
+    public void ActualizarFechaRegreso(FechaRegreso fechaRegreso) {
         this.fechaRegreso = Objects.requireNonNull(fechaRegreso, "La fecha de regreso no puede ser nula");
     }
 

@@ -5,7 +5,7 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.sofka.Turismo_DDD.domain.genericvalues.*;
+import com.sofka.Turismo_DDD.domain.genericvalues.CupoMaximo;
 import com.sofka.Turismo_DDD.domain.plandeviaje.commands.CrearSitioCommand;
 import com.sofka.Turismo_DDD.domain.plandeviaje.entity.FechaPlanDeViaje;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.PlanDeViajeCreado;
@@ -21,7 +21,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Date;
 import java.util.List;
 
-
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,11 +29,11 @@ class CrearSitioUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-     void CrearSitio() {
+    void CrearSitio() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
         SitioID sitioID = SitioID.of("xxxx");
         SitioPlanDeVIaje sitio = new SitioPlanDeVIaje("COLOMBIA");
-        var command = new CrearSitioCommand(planDeViajeID,sitioID,sitio);
+        var command = new CrearSitioCommand(planDeViajeID, sitioID, sitio);
         var usecase = new CrearSitioUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(events());
@@ -56,18 +55,18 @@ class CrearSitioUseCaseTest {
     }
 
     private List<DomainEvent> events() {
-        FechaPlanDeViajeID fechaPlanDeViajeID= FechaPlanDeViajeID.of("yyyyy");
-        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(new Date()),new FechaRegreso(new Date())),
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("yyyyy");
+        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(new Date()), new FechaRegreso(new Date())),
                 new CupoMaximo(2)
         ));
     }
 
     @Test
-     void CrearSitio_FallaPorTopeSitiosAgregados() {
+    void CrearSitio_FallaPorTopeSitiosAgregados() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
         SitioID sitioID = SitioID.of("xxxx");
         SitioPlanDeVIaje sitio = new SitioPlanDeVIaje("COLOMBIA");
-        var command = new CrearSitioCommand(planDeViajeID,sitioID,sitio);
+        var command = new CrearSitioCommand(planDeViajeID, sitioID, sitio);
         var usecase = new CrearSitioUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(fullICondicionesEvents());
@@ -83,8 +82,8 @@ class CrearSitioUseCaseTest {
     }
 
     private List<DomainEvent> fullICondicionesEvents() {
-        FechaPlanDeViajeID fechaPlanDeViajeID= FechaPlanDeViajeID.of("yyyyy");
-        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(new Date()),new FechaRegreso(new Date())),
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("yyyyy");
+        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(new Date()), new FechaRegreso(new Date())),
                         new CupoMaximo(2)
                 ),
                 new SitioCreado(SitioID.of("1"),

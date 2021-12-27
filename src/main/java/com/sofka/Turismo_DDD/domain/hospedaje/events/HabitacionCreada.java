@@ -20,8 +20,10 @@ public class HabitacionCreada extends DomainEvent {
         this.cupoMaximo = Objects.requireNonNull(cupoMaximo, "El cupo maximo no puede ser nulo");
         this.tipoDeHabitacion = Objects.requireNonNull(tipoDeHabitacion, "El tipo de habitacion no puede ser nulo");
         this.precioHabitacion = Objects.requireNonNull(precioHabitacion, "El precio de la habitacion no puede ser nulo");
-        if(precioHabitacion.value().isNaN())throw new IllegalArgumentException("El precio de la habitacion debe ser de tipo número");
-        if(precioHabitacion.value() < 0)throw new IllegalArgumentException("El precio debe de la habitacion ser de mayor a 0");
+        if (precioHabitacion.value().isNaN())
+            throw new IllegalArgumentException("El precio de la habitacion debe ser de tipo número");
+        if (precioHabitacion.value() < 0)
+            throw new IllegalArgumentException("El precio debe de la habitacion ser de mayor a 0");
     }
 
     public HabitacionID getHabitacionID() {

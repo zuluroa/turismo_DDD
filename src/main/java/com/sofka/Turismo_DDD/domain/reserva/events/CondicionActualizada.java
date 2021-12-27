@@ -15,9 +15,11 @@ public class CondicionActualizada extends DomainEvent {
     public CondicionActualizada(CondicionID condicionID, Observacion observacion) {
         super("sofka.reserva.condicionactualizada");
         this.condicionID = Objects.requireNonNull(condicionID, "El ID de condicion no puede ser nula");
-        this.observacion =  Objects.requireNonNull(observacion, "La observacion no puede ser nula");
-        if (CompararVacioONulo.compararSiNuloOEsVacio(observacion.value())) throw new IllegalArgumentException("La observacion no puede ser vacia");
-        if (mayorOIgual.mayorOIgualQue(observacion.value().length() ,5)) throw new IllegalArgumentException("La observacion debe tener más de 5 caracteres");
+        this.observacion = Objects.requireNonNull(observacion, "La observacion no puede ser nula");
+        if (CompararVacioONulo.compararSiNuloOEsVacio(observacion.value()))
+            throw new IllegalArgumentException("La observacion no puede ser vacia");
+        if (mayorOIgual.mayorOIgualQue(observacion.value().length(), 5))
+            throw new IllegalArgumentException("La observacion debe tener más de 5 caracteres");
     }
 
     public CondicionID getCondicionID() {

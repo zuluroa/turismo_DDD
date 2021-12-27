@@ -11,7 +11,7 @@ public class Fecha implements ValueObject<Date> {
 
     public Fecha(Date value) {
         this.value = Objects.requireNonNull(value, "La fecha no puede ser null");
-        if(value.before(new Date(Instant.now().toEpochMilli()))){
+        if (value.before(new Date(Instant.now().toEpochMilli()))) {
             throw new IllegalArgumentException("No puede colocar una fecha del pasado");
         }
     }

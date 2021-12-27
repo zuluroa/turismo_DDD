@@ -6,11 +6,11 @@ public class VendedorID extends Identity {
     public VendedorID() {
     }
 
-    private VendedorID(String id){
+    private VendedorID(String id) {
         super(id);
     }
 
-    public static VendedorID of(String id){
+    public static VendedorID of(String id) {
         return new VendedorID(id);
     }
 }

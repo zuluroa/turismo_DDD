@@ -11,10 +11,11 @@ public class CrearHospedajeUseCase extends UseCase<RequestCommand<CrearHospedaje
     @Override
     public void executeUseCase(RequestCommand<CrearHospedajeCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var hospedaje = new Hospedaje(command.getHospedajeID(),command.getLocalizacion(),command.getPrecioTotalHabitacion());
+        var hospedaje = new Hospedaje(command.getHospedajeID(), command.getLocalizacion(), command.getPrecioTotalHabitacion());
 
-        if (hospedaje.getLocalizacion().getCiudad().value().equals("DESCONOCIDO")) throw  new BusinessException(command.getHospedajeID().value(),
-                "La ciudad no puede ser desconocida");
+        if (hospedaje.getLocalizacion().getCiudad().value().equals("DESCONOCIDO"))
+            throw new BusinessException(command.getHospedajeID().value(),
+                    "La ciudad no puede ser desconocida");
 
         emit().onResponse(new ResponseEvents(hospedaje.getUncommittedChanges()));
     }

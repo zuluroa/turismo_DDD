@@ -13,33 +13,31 @@ import com.sofka.Turismo_DDD.domain.hospedaje.values.PrecioTotalHospedaje;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CrearHospedajeUseCaseTest {
 
     @Test
-    void CrearHospedaje(){
+    void CrearHospedaje() {
 
         var command = new CrearHospedajeCommand(HospedajeID.of("1234"),
-                new Localizacion(LocalizacionID.of("1223"),new Ciudad("CUCUTA")),
+                new Localizacion(LocalizacionID.of("1223"), new Ciudad("CUCUTA")),
                 new PrecioTotalHospedaje(20.0));
 
         var usecase = new CrearHospedajeUseCase();
 
         var events = UseCaseHandler
                 .getInstance()
-                .syncExecutor(usecase,new RequestCommand<>(command))
+                .syncExecutor(usecase, new RequestCommand<>(command))
                 .orElseThrow();
 
         HospedajeCreado event = (HospedajeCreado) events.getDomainEvents().get(0);
-        Assertions.assertEquals("1234",event.aggregateRootId());
-        Assertions.assertEquals(command.getLocalizacion(),event.getLocalizacion());
+        Assertions.assertEquals("1234", event.aggregateRootId());
+        Assertions.assertEquals(command.getLocalizacion(), event.getLocalizacion());
     }
 
     @Test
-    void CrearHospedaje_falloCiudadDesconocida(){
+    void CrearHospedaje_falloCiudadDesconocida() {
         var command = new CrearHospedajeCommand(HospedajeID.of("1234"),
-                new Localizacion(LocalizacionID.of("1223"),new Ciudad("DESCONOCIDO")),
+                new Localizacion(LocalizacionID.of("1223"), new Ciudad("DESCONOCIDO")),
                 new PrecioTotalHospedaje(20.0));
 
         var usecase = new CrearHospedajeUseCase();

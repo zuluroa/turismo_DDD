@@ -14,7 +14,7 @@ public class CrearActividadCommand extends Command {
 
     public CrearActividadCommand(PlanDeViajeID planDeViajeID, ActividadID actividadID, ActividadPlanDeVIaje actividadPlanDeVIaje) {
         this.planDeViajeID = Objects.requireNonNull(planDeViajeID, "El ID de plan de viaje no puede ser nulo");
-        this.actividadID = Objects.requireNonNull(actividadID,"El ID de actividad no puede ser nulo");
+        this.actividadID = Objects.requireNonNull(actividadID, "El ID de actividad no puede ser nulo");
         this.actividadPlanDeVIaje = Objects.requireNonNull(actividadPlanDeVIaje, "La actividad del plan de viaje no puede ser nulo");
     }
 

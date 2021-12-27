@@ -14,10 +14,10 @@ public class AumentarPrecioTotalHabitacionUseCase extends UseCase<TriggeredEvent
     @Override
     public void executeUseCase(TriggeredEvent<PrecioTotalHospedajeActulizado> triggeredEvent) {
         var event = triggeredEvent.getDomainEvent();
-        var hospedaje = Hospedaje.from(HospedajeID.of(event.aggregateRootId()),retrieveEvents());
-        if (event.getPrecioTotalHabitacion().value() < 0) throw  new BusinessException(event.aggregateRootId(),
+        var hospedaje = Hospedaje.from(HospedajeID.of(event.aggregateRootId()), retrieveEvents());
+        if (event.getPrecioTotalHabitacion().value() < 0) throw new BusinessException(event.aggregateRootId(),
                 "El precio del hospedaje debe ser mayor a 0");
-        hospedaje.ActualizarPrecioTotalHospedaje(hospedaje,new PrecioTotalHospedaje(hospedaje.getPrecioTotalHabitacion().value()+event.getPrecioTotalHabitacion().value()));
+        hospedaje.ActualizarPrecioTotalHospedaje(hospedaje, new PrecioTotalHospedaje(hospedaje.getPrecioTotalHabitacion().value() + event.getPrecioTotalHabitacion().value()));
         emit().onResponse(new ResponseEvents(hospedaje.getUncommittedChanges()));
     }
 }

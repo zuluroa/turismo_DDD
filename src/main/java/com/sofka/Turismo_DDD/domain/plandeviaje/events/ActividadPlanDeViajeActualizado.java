@@ -12,7 +12,7 @@ public class ActividadPlanDeViajeActualizado extends DomainEvent {
 
     public ActividadPlanDeViajeActualizado(Actividad actividad, ActividadPlanDeVIaje actividadPlanDeVIaje) {
         super("sofka.plandeviaje.actividadplanDeviajeactualizado");
-        this.actividad = Objects.requireNonNull(actividad,"La actividad no puede ser nula");
+        this.actividad = Objects.requireNonNull(actividad, "La actividad no puede ser nula");
         this.actividadPlanDeVIaje = Objects.requireNonNull(actividadPlanDeVIaje, "La actividad del plan de viaje no puede ser nulo");
     }
 

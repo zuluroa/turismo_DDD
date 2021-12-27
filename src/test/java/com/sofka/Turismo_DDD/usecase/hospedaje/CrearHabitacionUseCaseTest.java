@@ -28,18 +28,18 @@ class CrearHabitacionUseCaseTest {
     @Mock
     DomainEventRepository repository;
 
-    Localizacion localizacion = new Localizacion(LocalizacionID.of("123"),new Ciudad("BOGOTA"));
-    PrecioTotalHospedaje precioTotalHospedaje =  new PrecioTotalHospedaje(280.0);
+    Localizacion localizacion = new Localizacion(LocalizacionID.of("123"), new Ciudad("BOGOTA"));
+    PrecioTotalHospedaje precioTotalHospedaje = new PrecioTotalHospedaje(280.0);
 
     @Test
-     void CrearHabitacion(){
-        HospedajeID hospedajeID =  HospedajeID.of("1234");
+    void CrearHabitacion() {
+        HospedajeID hospedajeID = HospedajeID.of("1234");
         HabitacionID habitacionID = HabitacionID.of("xxxx");
         CupoMaximo cupoMaximo = new CupoMaximo(4);
         TipoDeHabitacion tipoDeHabitacion = new TipoDeHabitacion("HABITACION ESTANDAR");
         PrecioHabitacion precioHabitacion = new PrecioHabitacion(20.0);
 
-        var command = new CrearHabitacionCommand(hospedajeID,habitacionID,cupoMaximo,tipoDeHabitacion,precioHabitacion);
+        var command = new CrearHabitacionCommand(hospedajeID, habitacionID, cupoMaximo, tipoDeHabitacion, precioHabitacion);
         var usecase = new CrearHabitacionUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(events());
@@ -55,10 +55,10 @@ class CrearHabitacionUseCaseTest {
 
 
         var event = (HabitacionCreada) evens.get(1);
-        Assertions.assertEquals("xxxx",event.getHabitacionID().value());
-        Assertions.assertEquals(4,event.getCupoMaximo().value());
-        Assertions.assertEquals("HABITACION ESTANDAR",event.getTipoDeHabitacion().value());
-        Assertions.assertEquals(20.0,event.getPrecioHabitacion().value());
+        Assertions.assertEquals("xxxx", event.getHabitacionID().value());
+        Assertions.assertEquals(4, event.getCupoMaximo().value());
+        Assertions.assertEquals("HABITACION ESTANDAR", event.getTipoDeHabitacion().value());
+        Assertions.assertEquals(20.0, event.getPrecioHabitacion().value());
 
     }
 
@@ -67,19 +67,19 @@ class CrearHabitacionUseCaseTest {
         CupoMaximo cupoMaximo = new CupoMaximo(4);
         TipoDeHabitacion tipoDeHabitacion = new TipoDeHabitacion("HABITACION ESTANDAR");
         PrecioHabitacion precioHabitacion = new PrecioHabitacion(20.0);
-        return List.of(new HospedajeCreado(localizacion,precioTotalHospedaje),
-                new HabitacionCreada(habitacionID,cupoMaximo,tipoDeHabitacion,precioHabitacion));
+        return List.of(new HospedajeCreado(localizacion, precioTotalHospedaje),
+                new HabitacionCreada(habitacionID, cupoMaximo, tipoDeHabitacion, precioHabitacion));
     }
 
     @Test
-     void CrearServicio_FallaPorCantidadDeServicioCreados(){
-        HospedajeID hospedajeID =  HospedajeID.of("1234");
+    void CrearServicio_FallaPorCantidadDeServicioCreados() {
+        HospedajeID hospedajeID = HospedajeID.of("1234");
         HabitacionID habitacionID = HabitacionID.of("xxxx");
         CupoMaximo cupoMaximo = new CupoMaximo(4);
         TipoDeHabitacion tipoDeHabitacion = new TipoDeHabitacion("HABITACION ESTANDAR");
         PrecioHabitacion precioHabitacion = new PrecioHabitacion(20.0);
 
-        var command = new CrearHabitacionCommand(hospedajeID,habitacionID,cupoMaximo,tipoDeHabitacion,precioHabitacion);
+        var command = new CrearHabitacionCommand(hospedajeID, habitacionID, cupoMaximo, tipoDeHabitacion, precioHabitacion);
         var usecase = new CrearHabitacionUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(fullIHabitacionesEvents());
@@ -92,18 +92,18 @@ class CrearHabitacionUseCaseTest {
                     .syncExecutor(usecase, new RequestCommand<>(command))
                     .orElseThrow();
         }).getMessage();
-        Assertions.assertEquals("Alcanzo el limite de habitaciones creadas",message);
+        Assertions.assertEquals("Alcanzo el limite de habitaciones creadas", message);
     }
 
     private List<DomainEvent> fullIHabitacionesEvents() {
         CupoMaximo cupoMaximo = new CupoMaximo(4);
         TipoDeHabitacion tipoDeHabitacion = new TipoDeHabitacion("HABITACION ESTANDAR");
         PrecioHabitacion precioHabitacion = new PrecioHabitacion(20.0);
-        return List.of(new HospedajeCreado(localizacion,precioTotalHospedaje),
-                new HabitacionCreada(HabitacionID.of("1"),cupoMaximo,tipoDeHabitacion,precioHabitacion),
-                new HabitacionCreada(HabitacionID.of("2"),cupoMaximo,tipoDeHabitacion,precioHabitacion),
-                new HabitacionCreada(HabitacionID.of("3"),cupoMaximo,tipoDeHabitacion,precioHabitacion),
-                new HabitacionCreada(HabitacionID.of("4"),cupoMaximo,tipoDeHabitacion,precioHabitacion)
+        return List.of(new HospedajeCreado(localizacion, precioTotalHospedaje),
+                new HabitacionCreada(HabitacionID.of("1"), cupoMaximo, tipoDeHabitacion, precioHabitacion),
+                new HabitacionCreada(HabitacionID.of("2"), cupoMaximo, tipoDeHabitacion, precioHabitacion),
+                new HabitacionCreada(HabitacionID.of("3"), cupoMaximo, tipoDeHabitacion, precioHabitacion),
+                new HabitacionCreada(HabitacionID.of("4"), cupoMaximo, tipoDeHabitacion, precioHabitacion)
         );
     }
 }

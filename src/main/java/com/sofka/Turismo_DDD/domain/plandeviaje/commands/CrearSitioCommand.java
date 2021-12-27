@@ -13,7 +13,7 @@ public class CrearSitioCommand extends Command {
     private final SitioID sitioID;
     private final SitioPlanDeVIaje sitio;
 
-    public CrearSitioCommand(PlanDeViajeID planDeViajeID,SitioID sitioID, SitioPlanDeVIaje sitio) {
+    public CrearSitioCommand(PlanDeViajeID planDeViajeID, SitioID sitioID, SitioPlanDeVIaje sitio) {
         this.planDeViajeID = Objects.requireNonNull(planDeViajeID, "El ID de plan de viaje no puede ser nulo");
         this.sitioID = Objects.requireNonNull(sitioID, "El ID de sitio no puede ser nulo");
         this.sitio = Objects.requireNonNull(sitio, "El sitio del plan de viaje no puede ser nulo");

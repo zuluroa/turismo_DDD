@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Localizacion extends Entity<LocalizacionID> {
 
     private final LocalizacionID entityId;
-    private  Ciudad ciudad;
+    private Ciudad ciudad;
 
     public Localizacion(LocalizacionID entityId, Ciudad ciudad) {
         super(entityId);
@@ -17,7 +17,7 @@ public class Localizacion extends Entity<LocalizacionID> {
         this.ciudad = Objects.requireNonNull(ciudad, "Ciudad no puede ser nulo");
     }
 
-    public void actualizarCiudad(Ciudad ciudad){
+    public void actualizarCiudad(Ciudad ciudad) {
         this.ciudad = Objects.requireNonNull(ciudad, "Ciudad no puede ser nulo");
     }
 

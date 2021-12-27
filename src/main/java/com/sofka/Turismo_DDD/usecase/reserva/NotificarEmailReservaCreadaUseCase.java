@@ -17,7 +17,7 @@ public class NotificarEmailReservaCreadaUseCase extends UseCase<TriggeredEvent<R
         boolean isSend = service.send(
                 ReservaID.of(event.aggregateRootId()),
                 "support@sofka.com.co",
-                "Nueva reserva con fecha "+event.getFecha().value()
+                "Nueva reserva con fecha " + event.getFecha().value()
         );
 
         if (!isSend) throw new BusinessException(event.aggregateRootId(), "No se pudo enviar el correo");

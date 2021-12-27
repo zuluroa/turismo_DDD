@@ -11,12 +11,12 @@ public class CrearActividadUseCase extends UseCase<RequestCommand<CrearActividad
     @Override
     public void executeUseCase(RequestCommand<CrearActividadCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var planDeViaje =  PlanDeViaje.from(command.getPlanDeViajeID(),retrieveEvents());
+        var planDeViaje = PlanDeViaje.from(command.getPlanDeViajeID(), retrieveEvents());
 
         if (planDeViaje.getActividades().size() == 8) throw new BusinessException(command.getPlanDeViajeID().value(),
                 "Llego el tope de actividades agregadas");
 
-        planDeViaje.crearActividad(command.getActividadID(),command.getActividadPlanDeVIaje());
+        planDeViaje.crearActividad(command.getActividadID(), command.getActividadPlanDeVIaje());
         emit().onResponse(new ResponseEvents(planDeViaje.getUncommittedChanges()));
     }
 }

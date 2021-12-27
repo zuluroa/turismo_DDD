@@ -12,11 +12,11 @@ import java.util.Objects;
 public class Vendedor extends Entity<VendedorID> {
 
     private final Identificacion identificacion;
-    private Nombre nombre;
     private final Direccion direccion;
     private final Contacto contacto;
+    private Nombre nombre;
 
-    public Vendedor(VendedorID entityId, Identificacion identificacion, Nombre nombre, Direccion direccion,Contacto contacto) {
+    public Vendedor(VendedorID entityId, Identificacion identificacion, Nombre nombre, Direccion direccion, Contacto contacto) {
         super(entityId);
         Objects.requireNonNull(entityId, "El ID del vendedor no puede ser nulo");
         this.identificacion = identificacion;
@@ -25,7 +25,7 @@ public class Vendedor extends Entity<VendedorID> {
         this.contacto = contacto;
     }
 
-    public void actualizarNombre(Nombre nombre){
+    public void actualizarNombre(Nombre nombre) {
         this.nombre = nombre;
     }
 

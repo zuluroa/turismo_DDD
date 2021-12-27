@@ -11,20 +11,22 @@ public class CrearServicioUseCase extends UseCase<RequestCommand<CrearServicioCo
     @Override
     public void executeUseCase(RequestCommand<CrearServicioCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var hospedaje = Hospedaje.from(command.getHospedajeID(),retrieveEvents());
+        var hospedaje = Hospedaje.from(command.getHospedajeID(), retrieveEvents());
 
-        if (hospedaje.getHabitaciones() == null) throw  new BusinessException(command.getHospedajeID().value(),
+        if (hospedaje.getHabitaciones() == null) throw new BusinessException(command.getHospedajeID().value(),
                 "Debe existir por lo menos una habitacion");
 
-        if(hospedaje.getLocalizacion().getCiudad().value() == null || hospedaje.getLocalizacion().getCiudad().value().isBlank()) throw new BusinessException(command.getHospedajeID().value(),"" +
-                "El hospedaje no puede ser nulo o vacio");
-        if (hospedaje.getPrecioTotalHabitacion().value() < 0) throw  new BusinessException(command.getHospedajeID().value(),
-                "El precio del hospedaje debe ser mayor a 0");
+        if (hospedaje.getLocalizacion().getCiudad().value() == null || hospedaje.getLocalizacion().getCiudad().value().isBlank())
+            throw new BusinessException(command.getHospedajeID().value(), "" +
+                    "El hospedaje no puede ser nulo o vacio");
+        if (hospedaje.getPrecioTotalHabitacion().value() < 0)
+            throw new BusinessException(command.getHospedajeID().value(),
+                    "El precio del hospedaje debe ser mayor a 0");
 
-        if (hospedaje.getServicios().size() == 5)  throw  new BusinessException(command.getHospedajeID().value(),
+        if (hospedaje.getServicios().size() == 5) throw new BusinessException(command.getHospedajeID().value(),
                 "Alcanzo el limite de servicios creados");
 
-        hospedaje.crearServicio(command.getServicioID(),command.getTipoDeServicio());
+        hospedaje.crearServicio(command.getServicioID(), command.getTipoDeServicio());
         emit().onResponse(new ResponseEvents(hospedaje.getUncommittedChanges()));
     }
 }

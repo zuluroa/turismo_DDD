@@ -13,11 +13,12 @@ public class CrearReservaUseCase extends UseCase<RequestCommand<CrearReservaComm
     @Override
     public void executeUseCase(RequestCommand<CrearReservaCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var reserva =  new Reserva(command.getReservaID(),command.getVendedor(),command.getFecha());
-        var nombre =  new Nombre("NO TIENE", "NO TIENE");
+        var reserva = new Reserva(command.getReservaID(), command.getVendedor(), command.getFecha());
+        var nombre = new Nombre("NO TIENE", "NO TIENE");
 
         if (reserva.getVendedor().getNombre().value().nombres().equals(nombre.value().nombres()) ||
-                reserva.getVendedor().getNombre().value().apellidos().equals(nombre.value().apellidos())) throw new BusinessException(command.getReservaID().value(), "El vendedor debe tener un nombre");
+                reserva.getVendedor().getNombre().value().apellidos().equals(nombre.value().apellidos()))
+            throw new BusinessException(command.getReservaID().value(), "El vendedor debe tener un nombre");
 
         emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
     }

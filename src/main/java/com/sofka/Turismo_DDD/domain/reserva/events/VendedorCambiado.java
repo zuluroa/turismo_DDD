@@ -13,10 +13,10 @@ public class VendedorCambiado extends DomainEvent {
     public VendedorCambiado(Vendedor vendedor) {
         super("sofka.reserva.vendedorcambiado");
         this.vendedor = Objects.requireNonNull(vendedor, "El objeto vendedor no puede ser nulo");
-        Objects.requireNonNull(vendedor.getIdentificacion() ,"La identificacion no puede ser nula");
-        Objects.requireNonNull(vendedor.getNombre(),"El nombre no puede ser nulo");
-        Objects.requireNonNull(vendedor.getDireccion(),"La direccion no puede ser nula");
-        Objects.requireNonNull(vendedor.getContacto(),"El contacto no puede ser nulo");
+        Objects.requireNonNull(vendedor.getIdentificacion(), "La identificacion no puede ser nula");
+        Objects.requireNonNull(vendedor.getNombre(), "El nombre no puede ser nulo");
+        Objects.requireNonNull(vendedor.getDireccion(), "La direccion no puede ser nula");
+        Objects.requireNonNull(vendedor.getContacto(), "El contacto no puede ser nulo");
     }
 
     public Vendedor getVendedor() {

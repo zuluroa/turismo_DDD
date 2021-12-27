@@ -6,11 +6,11 @@ public class HabitacionID extends Identity {
     public HabitacionID() {
     }
 
-    private HabitacionID(String id){
+    private HabitacionID(String id) {
         super(id);
     }
 
-    public static HabitacionID of(String id){
+    public static HabitacionID of(String id) {
         return new HabitacionID(id);
     }
 }

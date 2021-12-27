@@ -24,7 +24,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -35,7 +34,7 @@ class CrearCondicionUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-     void CrearCondicion() {
+    void CrearCondicion() {
 
         //Arrange
         ReservaID reservaID = ReservaID.of("1234");
@@ -74,7 +73,7 @@ class CrearCondicionUseCaseTest {
     }
 
     @Test
-     void CrearCondicion_FallaPorTopeCondicionesAgregadas() {
+    void CrearCondicion_FallaPorTopeCondicionesAgregadas() {
 
         //Arrange
         ReservaID reservaID = ReservaID.of("1234");

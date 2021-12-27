@@ -12,13 +12,14 @@ public class ActualizarNombreDeVendedorUseCase extends UseCase<RequestCommand<Ac
     @Override
     public void executeUseCase(RequestCommand<ActualizarNombreDeVendedorCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var reserva =  Reserva.from(command.getReservaID(),retrieveEvents());
-        var nombre =  new Nombre("NO TIENE", "NO TIENE");
+        var reserva = Reserva.from(command.getReservaID(), retrieveEvents());
+        var nombre = new Nombre("NO TIENE", "NO TIENE");
 
         if (reserva.getVendedor().getNombre().value().nombres().equals(nombre.value().nombres()) ||
-                reserva.getVendedor().getNombre().value().apellidos().equals(nombre.value().apellidos())) throw new BusinessException(command.getReservaID().value(), "El vendedor debe tener un nombre");
+                reserva.getVendedor().getNombre().value().apellidos().equals(nombre.value().apellidos()))
+            throw new BusinessException(command.getReservaID().value(), "El vendedor debe tener un nombre");
 
-        reserva.actualizarNombreDeVendedor(command.getVendedor(),command.getNombre());
+        reserva.actualizarNombreDeVendedor(command.getVendedor(), command.getNombre());
 
         emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
 

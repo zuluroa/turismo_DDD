@@ -6,11 +6,11 @@ public class SitioID extends Identity {
     public SitioID() {
     }
 
-    private SitioID(String id){
+    private SitioID(String id) {
         super(id);
     }
 
-    public static SitioID of(String id){
+    public static SitioID of(String id) {
         return new SitioID(id);
     }
 }

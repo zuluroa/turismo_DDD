@@ -10,7 +10,10 @@ import com.sofka.Turismo_DDD.domain.plandeviaje.commands.CrearFechaPlanDeViajeCo
 import com.sofka.Turismo_DDD.domain.plandeviaje.entity.FechaPlanDeViaje;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.FechaPlanDeViajeCreada;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.PlanDeViajeCreado;
-import com.sofka.Turismo_DDD.domain.plandeviaje.values.*;
+import com.sofka.Turismo_DDD.domain.plandeviaje.values.FechaIda;
+import com.sofka.Turismo_DDD.domain.plandeviaje.values.FechaPlanDeViajeID;
+import com.sofka.Turismo_DDD.domain.plandeviaje.values.FechaRegreso;
+import com.sofka.Turismo_DDD.domain.plandeviaje.values.PlanDeViajeID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +22,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -31,9 +33,9 @@ class CrearFechaPlanDeViajeUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-     void CrearFechaPlanDeViaje() {
+    void CrearFechaPlanDeViaje() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
-        FechaPlanDeViajeID fechaPlanDeViajeID =  FechaPlanDeViajeID.of("xxxx");
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("xxxx");
 
         var fechaIda = Calendar.getInstance();
         fechaIda.set(2022, Calendar.JANUARY, 3);
@@ -41,9 +43,9 @@ class CrearFechaPlanDeViajeUseCaseTest {
         var fechaRegreso = Calendar.getInstance();
         fechaRegreso.set(2022, Calendar.JANUARY, 4);
 
-        FechaPlanDeViaje fechaPlanDeViaje = new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(fechaIda.getTime()),new FechaRegreso(fechaRegreso.getTime()));
+        FechaPlanDeViaje fechaPlanDeViaje = new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(fechaIda.getTime()), new FechaRegreso(fechaRegreso.getTime()));
 
-        var command = new CrearFechaPlanDeViajeCommand(planDeViajeID,fechaPlanDeViaje);
+        var command = new CrearFechaPlanDeViajeCommand(planDeViajeID, fechaPlanDeViaje);
         var usecase = new CrearFechaPlanDeViajeUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(events());
@@ -69,16 +71,16 @@ class CrearFechaPlanDeViajeUseCaseTest {
 
         var fechaRegreso = Calendar.getInstance();
         fechaRegreso.set(2022, Calendar.JANUARY, 4);
-        FechaPlanDeViajeID fechaPlanDeViajeID= FechaPlanDeViajeID.of("yyyyy");
-        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(fechaIda.getTime()),new FechaRegreso(fechaRegreso.getTime())),
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("yyyyy");
+        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(fechaIda.getTime()), new FechaRegreso(fechaRegreso.getTime())),
                 new CupoMaximo(2)
         ));
     }
 
     @Test
-     void CrearFechaPlanDeViajeFallaPorDiaNoHabil() {
+    void CrearFechaPlanDeViajeFallaPorDiaNoHabil() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
-        FechaPlanDeViajeID fechaPlanDeViajeID =  FechaPlanDeViajeID.of("xxxx");
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("xxxx");
 
         var fechaIda = Calendar.getInstance();
         fechaIda.set(2022, Calendar.JANUARY, 25);
@@ -86,9 +88,9 @@ class CrearFechaPlanDeViajeUseCaseTest {
         var FechaRegreso = Calendar.getInstance();
         FechaRegreso.set(2022, Calendar.JANUARY, 29);
 
-        FechaPlanDeViaje fechaPlanDeViaje = new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(fechaIda.getTime()),new FechaRegreso(FechaRegreso.getTime()));
+        FechaPlanDeViaje fechaPlanDeViaje = new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(fechaIda.getTime()), new FechaRegreso(FechaRegreso.getTime()));
 
-        var command = new CrearFechaPlanDeViajeCommand(planDeViajeID,fechaPlanDeViaje);
+        var command = new CrearFechaPlanDeViajeCommand(planDeViajeID, fechaPlanDeViaje);
         var usecase = new CrearFechaPlanDeViajeUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(eventsFallo());

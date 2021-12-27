@@ -10,7 +10,7 @@ public class HabitacionQuitada extends DomainEvent {
 
     public HabitacionQuitada(HabitacionID habitacionID) {
         super("sofka.hospedaje.habitacionquitada");
-        this.habitacionID = Objects.requireNonNull(habitacionID,"El ID de la habitacion no puede ser nula");
+        this.habitacionID = Objects.requireNonNull(habitacionID, "El ID de la habitacion no puede ser nula");
     }
 
     public HabitacionID getHabitacionID() {

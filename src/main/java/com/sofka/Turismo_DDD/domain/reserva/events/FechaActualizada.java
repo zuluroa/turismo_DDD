@@ -12,7 +12,7 @@ public class FechaActualizada extends DomainEvent {
 
     public FechaActualizada(Reserva reserva, Fecha fecha) {
         super("sofka.reserva.fechaactualizada");
-        this.reserva = Objects.requireNonNull(reserva,"La reserva no puede ser nula");
+        this.reserva = Objects.requireNonNull(reserva, "La reserva no puede ser nula");
         this.fecha = Objects.requireNonNull(fecha, "La fecha no puede ser nula");
     }
 

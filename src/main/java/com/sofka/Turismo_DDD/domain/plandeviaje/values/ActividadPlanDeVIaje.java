@@ -12,8 +12,9 @@ public class ActividadPlanDeVIaje implements ValueObject<String> {
 
     public ActividadPlanDeVIaje(String value) {
         this.value = Objects.requireNonNull(value, "La actividad no puede ser nulo");
-        if(compararSiNuloOEsVacio(this.value))throw new IllegalArgumentException("La actividad no puede ser vacio");
-        if(mayorOIgualQue(this.value.length() , 6)) throw new IllegalArgumentException("La actividad debe ser mayor de 6 caracteres");
+        if (compararSiNuloOEsVacio(this.value)) throw new IllegalArgumentException("La actividad no puede ser vacio");
+        if (mayorOIgualQue(this.value.length(), 6))
+            throw new IllegalArgumentException("La actividad debe ser mayor de 6 caracteres");
     }
 
     public String value() {

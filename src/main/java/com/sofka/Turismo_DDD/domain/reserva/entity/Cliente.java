@@ -25,8 +25,7 @@ public class Cliente extends Entity<ClienteID> {
     }
 
 
-
-    public void actualizarContacto(Contacto contacto){
+    public void actualizarContacto(Contacto contacto) {
         this.contacto = contacto;
     }
 

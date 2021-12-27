@@ -6,11 +6,11 @@ public class PlanDeViajeID extends Identity {
     public PlanDeViajeID() {
     }
 
-    private PlanDeViajeID(String id){
+    private PlanDeViajeID(String id) {
         super(id);
     }
 
-    public static PlanDeViajeID of(String id){
+    public static PlanDeViajeID of(String id) {
         return new PlanDeViajeID(id);
     }
 }

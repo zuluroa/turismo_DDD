@@ -9,8 +9,9 @@ public class PrecioTotalHospedaje implements ValueObject<Double> {
 
     public PrecioTotalHospedaje(Double value) {
         this.value = Objects.requireNonNull(value, "El precio de la habitacion no puede ser vacio");
-        if(this.value.isNaN())throw new IllegalArgumentException("El precio de la habitacion debe ser de tipo número");
-        if(this.value < 0)throw new IllegalArgumentException("El precio debe de la habitacion ser de mayor a 0");
+        if (this.value.isNaN())
+            throw new IllegalArgumentException("El precio de la habitacion debe ser de tipo número");
+        if (this.value < 0) throw new IllegalArgumentException("El precio debe de la habitacion ser de mayor a 0");
     }
 
     public Double value() {

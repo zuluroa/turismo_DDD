@@ -13,7 +13,7 @@ public class VendedorActualizado extends DomainEvent {
     public VendedorActualizado(Vendedor vendedor, Nombre nombre) {
         super("sofka.reserva.vendedoractualizado");
         this.vendedor = Objects.requireNonNull(vendedor, "El ID de vendedor no puede ser nulo");
-        this.nombre = Objects.requireNonNull(nombre,"El nombre del vendedor no puede ser nulo");
+        this.nombre = Objects.requireNonNull(nombre, "El nombre del vendedor no puede ser nulo");
     }
 
     public Vendedor getVendedorID() {

@@ -11,12 +11,12 @@ public class AgregarClienteUseCase extends UseCase<RequestCommand<AgregarCliente
     @Override
     public void executeUseCase(RequestCommand<AgregarClienteCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var reserva =  Reserva.from(command.getReservaID(),retrieveEvents());
+        var reserva = Reserva.from(command.getReservaID(), retrieveEvents());
 
         if (reserva.getCliente().size() == 3) throw new BusinessException(command.getReservaID().value(),
                 "Llego el tope de clientes agregados");
 
-        reserva.agregarCliente(command.getClienteID(),command.getIdentificacion(),command.getNombre(),command.getDireccion(),command.getContacto());
+        reserva.agregarCliente(command.getClienteID(), command.getIdentificacion(), command.getNombre(), command.getDireccion(), command.getContacto());
 
         emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
     }

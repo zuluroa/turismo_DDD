@@ -12,10 +12,12 @@ public class HospedajeCreado extends DomainEvent {
 
     public HospedajeCreado(Localizacion localizacion, PrecioTotalHospedaje precioTotalHabitacion) {
         super("sofka.hospedaje.hospedajecreado");
-        this.localizacion =  Objects.requireNonNull(localizacion, "La localizacion no puede ser nula");
+        this.localizacion = Objects.requireNonNull(localizacion, "La localizacion no puede ser nula");
         this.precioTotalHabitacion = Objects.requireNonNull(precioTotalHabitacion, "El precio del hospedaje no puede ser nulo");
-        if(precioTotalHabitacion.value().isNaN())throw new IllegalArgumentException("El precio del hospedaje debe ser de tipo número");
-        if(precioTotalHabitacion.value() < 0)throw new IllegalArgumentException("El precio debe del hospedaje ser de mayor a 0");
+        if (precioTotalHabitacion.value().isNaN())
+            throw new IllegalArgumentException("El precio del hospedaje debe ser de tipo número");
+        if (precioTotalHabitacion.value() < 0)
+            throw new IllegalArgumentException("El precio debe del hospedaje ser de mayor a 0");
     }
 
     public Localizacion getLocalizacion() {

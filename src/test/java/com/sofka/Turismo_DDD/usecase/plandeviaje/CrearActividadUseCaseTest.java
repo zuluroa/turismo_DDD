@@ -7,11 +7,9 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.sofka.Turismo_DDD.domain.genericvalues.CupoMaximo;
 import com.sofka.Turismo_DDD.domain.plandeviaje.commands.CrearActividadCommand;
-import com.sofka.Turismo_DDD.domain.plandeviaje.commands.CrearSitioCommand;
 import com.sofka.Turismo_DDD.domain.plandeviaje.entity.FechaPlanDeViaje;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.ActividadCreado;
 import com.sofka.Turismo_DDD.domain.plandeviaje.events.PlanDeViajeCreado;
-import com.sofka.Turismo_DDD.domain.plandeviaje.events.SitioCreado;
 import com.sofka.Turismo_DDD.domain.plandeviaje.values.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,11 +29,11 @@ class CrearActividadUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-     void CrearActividad() {
+    void CrearActividad() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
         ActividadID actividadID = ActividadID.of("xxxx");
         ActividadPlanDeVIaje actividadPlanDeVIaje = new ActividadPlanDeVIaje("REALIZAR UN RECORRIDO A LA MONTAÑA");
-        var command = new CrearActividadCommand(planDeViajeID,actividadID,actividadPlanDeVIaje);
+        var command = new CrearActividadCommand(planDeViajeID, actividadID, actividadPlanDeVIaje);
         var usecase = new CrearActividadUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(events());
@@ -57,18 +55,18 @@ class CrearActividadUseCaseTest {
     }
 
     private List<DomainEvent> events() {
-        FechaPlanDeViajeID fechaPlanDeViajeID= FechaPlanDeViajeID.of("yyyyy");
-        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(new Date()),new FechaRegreso(new Date())),
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("yyyyy");
+        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(new Date()), new FechaRegreso(new Date())),
                 new CupoMaximo(2)
         ));
     }
 
     @Test
-     void CrearCondicion_FallaPorTopeCondicionesAgregadas() {
+    void CrearCondicion_FallaPorTopeCondicionesAgregadas() {
         PlanDeViajeID planDeViajeID = PlanDeViajeID.of("1234");
         ActividadID actividadID = ActividadID.of("xxxx");
         ActividadPlanDeVIaje actividadPlanDeVIaje = new ActividadPlanDeVIaje("REALIZAR UN RECORRIDO A LA MONTAÑA");
-        var command = new CrearActividadCommand(planDeViajeID,actividadID,actividadPlanDeVIaje);
+        var command = new CrearActividadCommand(planDeViajeID, actividadID, actividadPlanDeVIaje);
         var usecase = new CrearActividadUseCase();
 
         when(repository.getEventsBy("1234")).thenReturn(fullActividadesEvents());
@@ -84,8 +82,8 @@ class CrearActividadUseCaseTest {
     }
 
     private List<DomainEvent> fullActividadesEvents() {
-        FechaPlanDeViajeID fechaPlanDeViajeID= FechaPlanDeViajeID.of("yyyyy");
-        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID,new FechaIda(new Date()),new FechaRegreso(new Date())),
+        FechaPlanDeViajeID fechaPlanDeViajeID = FechaPlanDeViajeID.of("yyyyy");
+        return List.of(new PlanDeViajeCreado(new FechaPlanDeViaje(fechaPlanDeViajeID, new FechaIda(new Date()), new FechaRegreso(new Date())),
                         new CupoMaximo(2)
                 ),
                 new ActividadCreado(ActividadID.of("1"),

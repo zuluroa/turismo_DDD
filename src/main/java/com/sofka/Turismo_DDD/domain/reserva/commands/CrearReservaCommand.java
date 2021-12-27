@@ -12,10 +12,10 @@ public class CrearReservaCommand extends Command {
     private final Vendedor vendedor;
     private final Fecha fecha;
 
-    public CrearReservaCommand(ReservaID reservaID,Vendedor vendedor, Fecha fecha) {
-        this.reservaID = Objects.requireNonNull(reservaID,"El ID de reserva no puede ser nulo");
-        this.vendedor = Objects.requireNonNull(vendedor,"El vendedor no puede ser nulo");
-        this.fecha = Objects.requireNonNull(fecha,"La fecha no puede ser nula");
+    public CrearReservaCommand(ReservaID reservaID, Vendedor vendedor, Fecha fecha) {
+        this.reservaID = Objects.requireNonNull(reservaID, "El ID de reserva no puede ser nulo");
+        this.vendedor = Objects.requireNonNull(vendedor, "El vendedor no puede ser nulo");
+        this.fecha = Objects.requireNonNull(fecha, "La fecha no puede ser nula");
     }
 
     public ReservaID getReservaID() {

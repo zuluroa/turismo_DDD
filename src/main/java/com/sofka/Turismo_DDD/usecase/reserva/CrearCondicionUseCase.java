@@ -11,12 +11,12 @@ public class CrearCondicionUseCase extends UseCase<RequestCommand<CrearCondicion
     @Override
     public void executeUseCase(RequestCommand<CrearCondicionCommand> requestCommand) {
         var command = requestCommand.getCommand();
-        var reserva =  Reserva.from(command.getReservaID(),retrieveEvents());
+        var reserva = Reserva.from(command.getReservaID(), retrieveEvents());
 
-        if (reserva.getCondiciones().size() == 6)  throw new BusinessException(command.getReservaID().value(),
+        if (reserva.getCondiciones().size() == 6) throw new BusinessException(command.getReservaID().value(),
                 "Llego el tope de condiciones agregadas");
 
-        reserva.crearCondicion(command.getCondicionID(),command.getObservacion());
+        reserva.crearCondicion(command.getCondicionID(), command.getObservacion());
         emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
     }
 }

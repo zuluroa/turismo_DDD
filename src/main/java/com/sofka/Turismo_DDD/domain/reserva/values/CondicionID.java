@@ -6,11 +6,11 @@ public class CondicionID extends Identity {
     public CondicionID() {
     }
 
-    private CondicionID(String id){
+    private CondicionID(String id) {
         super(id);
     }
 
-    public static CondicionID of(String id){
+    public static CondicionID of(String id) {
         return new CondicionID(id);
     }
 }

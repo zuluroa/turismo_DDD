@@ -12,8 +12,10 @@ public class SitioPlanDeVIaje implements ValueObject<String> {
 
     public SitioPlanDeVIaje(String value) {
         this.value = Objects.requireNonNull(value, "El sitio del plan de viaje no puede ser nulo");
-        if(compararSiNuloOEsVacio(this.value))throw new IllegalArgumentException("El sitio del plan de viaje no puede ser vacio");
-        if(mayorOIgualQue(this.value.length() , 6)) throw new IllegalArgumentException("El sitio del plan de viaje debe ser mayor de 3 caracteres");
+        if (compararSiNuloOEsVacio(this.value))
+            throw new IllegalArgumentException("El sitio del plan de viaje no puede ser vacio");
+        if (mayorOIgualQue(this.value.length(), 6))
+            throw new IllegalArgumentException("El sitio del plan de viaje debe ser mayor de 3 caracteres");
     }
 
     public String value() {

@@ -12,8 +12,10 @@ public class TipoDeServicio implements ValueObject<String> {
 
     public TipoDeServicio(String value) {
         this.value = Objects.requireNonNull(value, "El tipo de servicio no puede ser nulo");
-        if(compararSiNuloOEsVacio(this.value))throw new IllegalArgumentException("El tipo de servicio no puede ser vacio");
-        if(mayorOIgualQue(this.value.length() , 4)) throw new IllegalArgumentException("El tipo de servicio debe ser mayor de 4 caracteres");
+        if (compararSiNuloOEsVacio(this.value))
+            throw new IllegalArgumentException("El tipo de servicio no puede ser vacio");
+        if (mayorOIgualQue(this.value.length(), 4))
+            throw new IllegalArgumentException("El tipo de servicio debe ser mayor de 4 caracteres");
     }
 
     public String value() {
