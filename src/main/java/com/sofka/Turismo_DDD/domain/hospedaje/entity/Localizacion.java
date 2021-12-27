@@ -15,6 +15,7 @@ public class Localizacion extends Entity<LocalizacionID> {
         super(entityId);
         this.entityId = Objects.requireNonNull(entityId, "El ID de localizacion no puede ser nulo");
         this.ciudad = Objects.requireNonNull(ciudad, "Ciudad no puede ser nulo");
+        if (ciudad.value().isBlank()) throw new IllegalArgumentException("El nombre de la ciudad no puede estar vacio");
     }
 
     public void actualizarCiudad(Ciudad ciudad) {

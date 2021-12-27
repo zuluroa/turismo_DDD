@@ -19,7 +19,7 @@ public class AgregarClienteCommand extends Command {
     private final Contacto contacto;
 
     public AgregarClienteCommand(ReservaID reservaID, ClienteID clienteID, Identificacion identificacion, Nombre nombre, Direccion direccion, Contacto contacto) {
-        this.reservaID = reservaID;
+        this.reservaID = Objects.requireNonNull(reservaID, "El ID de la reserva no puede ser nula");
         this.clienteID = Objects.requireNonNull(clienteID, "El ID del cliente no puede ser nulo");
         this.identificacion = Objects.requireNonNull(identificacion, "El tipo de identificación no puede ser nulo");
         this.nombre = Objects.requireNonNull(nombre, "El nombre no puede ser nulo");

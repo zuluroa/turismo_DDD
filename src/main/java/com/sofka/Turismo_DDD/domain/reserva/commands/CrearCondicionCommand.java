@@ -13,7 +13,7 @@ public class CrearCondicionCommand extends Command {
     private ReservaID reservaID;
 
     public CrearCondicionCommand(ReservaID reservaID, CondicionID condicionID, Observacion observacion) {
-        this.reservaID = Objects.requireNonNull(reservaID, "");
+        this.reservaID = Objects.requireNonNull(reservaID, "El ID de la reserva no puede ser nula");
         this.condicionID = Objects.requireNonNull(condicionID, "El ID de la condicion no puede ser nula");
         this.observacion = Objects.requireNonNull(observacion, "La observacion no puede ser nula");
     }

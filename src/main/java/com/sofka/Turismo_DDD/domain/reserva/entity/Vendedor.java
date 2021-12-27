@@ -19,10 +19,10 @@ public class Vendedor extends Entity<VendedorID> {
     public Vendedor(VendedorID entityId, Identificacion identificacion, Nombre nombre, Direccion direccion, Contacto contacto) {
         super(entityId);
         Objects.requireNonNull(entityId, "El ID del vendedor no puede ser nulo");
-        this.identificacion = identificacion;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.contacto = contacto;
+        this.identificacion =  Objects.requireNonNull(identificacion, "La identificacion del vendedor no puede ser nulo");
+        this.nombre = Objects.requireNonNull(nombre, "El nombre del vendedor no puede ser nulo");
+        this.direccion = Objects.requireNonNull(direccion, "La direccion del vendedor no puede ser nulo");
+        this.contacto = Objects.requireNonNull(contacto, "El contacto del vendedor no puede ser nulo");
     }
 
     public void actualizarNombre(Nombre nombre) {

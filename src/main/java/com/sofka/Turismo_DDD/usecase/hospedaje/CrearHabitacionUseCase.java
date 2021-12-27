@@ -15,7 +15,7 @@ public class CrearHabitacionUseCase extends UseCase<RequestCommand<CrearHabitaci
 
         if (hospedaje.getLocalizacion().getCiudad().value() == null || hospedaje.getLocalizacion().getCiudad().value().isBlank())
             throw new BusinessException(command.getHospedajeID().value(),
-                    "El hospedaje no puede ser nulo o vacio");
+                    "La ciudad no puede ser nulo o vacio");
         if (hospedaje.getPrecioTotalHabitacion().value() < 0)
             throw new BusinessException(command.getHospedajeID().value(),
                     "El precio del hospedaje debe ser mayor a 0");

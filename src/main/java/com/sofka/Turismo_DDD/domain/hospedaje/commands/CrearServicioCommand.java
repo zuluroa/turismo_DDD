@@ -14,7 +14,7 @@ public class CrearServicioCommand extends Command {
     private final TipoDeServicio tipoDeServicio;
 
     public CrearServicioCommand(HospedajeID hospedajeID, ServicioID servicioID, TipoDeServicio tipoDeServicio) {
-        this.hospedajeID = hospedajeID;
+        this.hospedajeID = Objects.requireNonNull(hospedajeID, "El ID de hospedaje no puede ser nulo");
         this.servicioID = Objects.requireNonNull(servicioID, "El ID del servicio no puede ser nulo");
         this.tipoDeServicio = Objects.requireNonNull(tipoDeServicio, "El tipo de servicio no puede ser nulo");
     }
